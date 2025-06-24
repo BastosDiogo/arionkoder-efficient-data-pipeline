@@ -21,12 +21,12 @@ This repository contains the implementation for the 'Memory-Efficient Data Pipel
 
 
 # Testing the Application
-    As this application acts as a webhook, it must be triggered by an external script.
-    We recommend using the sample provided in `script_test.py`. However, any method that can make HTTP requests is acceptable.
+As this application acts as a webhook, it must be triggered by an external script.
+We recommend using the sample provided in `script_test.py`. However, any method that can make HTTP requests is acceptable.
 
 # Inspecting the Database
-    You can access the API documentation at: http://localhost:8000/docs#/
+You can access the API documentation at: http://localhost:8000/docs#/
 
-    Note: Due to the nature of the webhook, the POST endpoint cannot be tested directly through the documentation interface.
-    
-    However, both GET (to retrieve saved data) and DELETE (to clear the database) endpoints can be used normally.
+Note: Due to the nature of the webhook, the POST endpoint cannot be tested directly through the documentation interface.
+
+However, both GET (to retrieve saved data) and DELETE (to clear the database) endpoints can be used normally.

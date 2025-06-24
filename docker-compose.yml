@@ -1,0 +1,26 @@
+version: "3.6"
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.10-management
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - ./dados:/var/lib/rabbitmq/
+    environment:
+      - RABBITMQ_DEFAULT_USER=diogobastos
+      - RABBITMQ_DEFAULT_PASS=diogobastos
+
+  fastapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fastapi_app
+    ports:
+      - 8000:8000
+    depends_on:
+      - rabbitmq
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload

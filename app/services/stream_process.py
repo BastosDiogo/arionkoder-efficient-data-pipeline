@@ -3,7 +3,6 @@ from datetime import datetime
 import logging
 from services.sql_database import SQL
 from uuid import uuid1
-'app/services/publisher.py'
 from services.publisher import publisher
 
 

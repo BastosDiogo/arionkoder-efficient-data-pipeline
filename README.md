@@ -28,7 +28,6 @@ We recommend using the sample provided in `script_test.py`. However, any method 
 You can access the API documentation at: http://localhost:8000/docs#/
 
 Note: Due to the nature of the webhook, the POST endpoint cannot be tested directly through the documentation interface.
-    
 However, both GET (to retrieve saved data) and DELETE (to clear the database) endpoints can be used normally.
 
 # Env Sample

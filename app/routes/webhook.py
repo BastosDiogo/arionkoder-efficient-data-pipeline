@@ -2,6 +2,7 @@ from fastapi import APIRouter, BackgroundTasks, status
 from fastapi.responses import JSONResponse
 from fastapi import Request
 from services.stream_process import ProcessData
+from fastapi.encoders import jsonable_encoder
 
 router = APIRouter(tags=["Web Hooks"], prefix="/webhook")
 
@@ -21,4 +22,24 @@ async def data_pipeline(request: Request, background: BackgroundTasks):
     return JSONResponse(
         status_code=status.HTTP_201_CREATED,
         content={'message': 'Creating profiles'}
+    )
+
+
+@router.get("/data-pipeline/users")
+def data_pipeline_users():
+    """Return all users in database"""
+
+    return JSONResponse(
+        status_code=status.HTTP_200_OK,
+        content=jsonable_encoder(ProcessData().find_all())
+    )
+
+
+@router.delete("/data-pipeline/delete-users")
+def data_pipeline_delete_users():
+    """Delete all users in database"""
+    ProcessData().clean_database()
+    return JSONResponse(
+        status_code=status.HTTP_200_OK,
+        content={'message': 'Users has been delete.'}
     )
